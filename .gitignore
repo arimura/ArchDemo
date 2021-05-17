@@ -28,3 +28,4 @@ DerivedData/
 /*.gcno
 
 /output
+/ArchDemo.framework
