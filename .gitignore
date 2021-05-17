@@ -28,4 +28,5 @@ DerivedData/
 /*.gcno
 
 /output
+/output.xcarchive
 /ArchDemo.framework
