@@ -1,0 +1,1 @@
+For inspecting Xcode build system and Architecture of generated lib
