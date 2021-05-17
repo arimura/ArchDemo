@@ -1,5 +1,9 @@
 PRJ:=ArchDemo/ArchDemo.xcodeproj
 SDK:=iphonesimulator
+CONFIGURATION:=Release
+
+help:
+	echo '[build|archive] [SDK=[iphonesimulator|iphone]] [CONFIGURATION=[Release|Debug]]'
 
 list-info:
 	xcodebuild -list -project $(PRJ) 
@@ -9,8 +13,8 @@ build:
 	  -scheme ArchDemo \
 	  -derivedDataPath output \
 	  -sdk $(SDK) \
-	  -configuration Release
-	cp -r output/Build/Products/Release-iphonesimulator/ArchDemo.framework .
+	  -configuration $(CONFIGURATION)
+	cp -r output/Build/Products/$(CONFIGURATION)-iphonesimulator/ArchDemo.framework .
 	file ArchDemo.framework/ArchDemo 
 
 archive:
@@ -20,7 +24,9 @@ archive:
 	  -sdk $(SDK) \
 	  BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
 	  SKIP_INSTALL=NO \
-	  -configuration Release
+	  -configuration $(CONFIGURATION)
+	cp -r output.xcarchive/Products/Library/Frameworks/ArchDemo.framework .
+	file ArchDemo.framework/ArchDemo
 
 clean:
 	rm -rf output/*
